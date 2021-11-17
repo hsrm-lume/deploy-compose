@@ -1,7 +1,6 @@
+from _util import Point, Tree, iso_to_date
+
 ## Helper points to define tree roots
-from mock._util import Point, Tree, iso_to_date
-
-
 cBuilding = dict(lat=  50.096928, lng=   8.216829)
 bBuilding = dict(lat=  50.096098, lng=   8.216001)
 mainz     = dict(lat=  49.992863, lng=   8.247253)
