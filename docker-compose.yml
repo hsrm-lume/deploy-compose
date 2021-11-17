@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  api:
+    image: ghcr.io/hsrm-lume/lume-rest-api:latest # pull image from gh registry
+    hostname: lumeapi
+    container_name: lumeapi 
+    restart: unless-stopped
+    links: 
+      - neo4j # link to the neo4j container
+    environment:
+      NEO4J_URL: neo4j://neo4j:7687 # use hostname of neo4j container
+      NEO4J_USER: readwrite
+      NEO4J_PASSWORD: "${NEO4J_RW_PASSWORD}"
+      NODE_STAGE: "${STAGE}"
+    ports:
+      - "${API_PORT}:3000" # expose the api on host-port 8081
+
+  neo4j:
+    image: neo4j:enterprise # pull neo4j image from docker-hub
+    hostname: neo4j
+    container_name: neo4j
+    restart: unless-stopped
+    volumes:
+     - ./neo4j_data:/data
+    ports:
+      - "${NEO4J_BROWSER_PORT}:7474" # expose http browser ui
+      - "${BOLT_PORT}:7687" # expose bolt port
+    environment:
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_AUTH: neo4j/changeme # change password by running seed file against neo4j
+
+  map:
+    image: ghcr.io/hsrm-lume/angular-map-frontend:latest # pull image from gh registry
+    container_name: map
+    restart: unless-stopped
+    ports:
+      - "${MAPVIEW_PORT}:80" # expose map view
