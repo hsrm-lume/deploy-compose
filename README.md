@@ -14,4 +14,4 @@ This is a small guide how to deploy LUME-Stack with docker-compose.
     This substitutes the config variables in the seed file and sends it to the database. Can only be called once because neo4j user's password gets changed.
 5. Optional: Mock data
     1. Create Randomize-Config in mock folder (see [`mock/template.py`](mock/template.py))
-    2. Run Ransomization: `python3 mock/<file>.py`
+    2. Run Randomization: `python3 mock/<file>.py`
