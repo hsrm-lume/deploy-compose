@@ -13,7 +13,7 @@ export ROOT_LAT=50.09692895957101 # Latitude  of root flame
 export ROOT_LNG=8.21682929992676  # Longitude of root flame
 
 ## ============ PORTS ================ ##
-export MAPVIEW_PORT=8080
-export API_PORT=3000
+export MAPVIEW_PORT=8080 # has to match with vhost port in nginx-vhosts.conf
+export API_PORT=3000 # has to match with vhost port in nginx-vhosts.conf
 export NEO4J_BROWSER_PORT=7474
 export BOLT_PORT=7687

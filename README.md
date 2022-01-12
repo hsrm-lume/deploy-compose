@@ -1,13 +1,42 @@
 # LUME Deployment
 
-This is a small guide how to deploy LUME-Stack with docker-compose.
+This is a small guide how to deploy LUME-Stack on cs.hs-rm VMs with docker-compose.
 
-## How to Deploy
+## Connect via SSH with tunnel for http(s)
+
+- Save the id files in your .ssh directory
+- add the id file to the ssh agent  
+  or  
+  create a ~/.ssh/config with:
+  ```config
+  Host *lume*
+    User root
+    IdentityFile <Absolute path to id_ed25519 file>
+  ```
+- establish a ssh connection with http tunnel  
+  Use guide [on Stackexchange](https://unix.stackexchange.com/a/490641)
+
+## Installation
+
+Run the installation script `./install.sh`
+
+1. Update the system:       `apt update && apt upgrade -y`
+2. Install tools:           `apt install nginx curl git -y`
+3. Install docker:          `curl -sSL https://get.docker.com/ | sh`
+4. Install docker-compose:  `curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose`
+5. Clone repository:        `git clone https://github.com/hsrm-lume/deploy-compose.git && cd deploy-compose`
+6. Set up Proxy for docker: ``
+
+## Setup ReverseProxy (nginx)
+
+
+
+## Start services
 
 1. Edit Config [`config.sh`](config.sh)
 2. Load Config in env variables: `source config.sh`
 3. Run Docker-Compose: `docker-compose up [-d]`
-4. Initialize Database (only after first start):
+4. Initialize Database (only on first start / fresh installation):
     1. Check for syntactical correctness: `envsubst < seed.cql | less`
     2. Apply Configuration with:  
     `envsubst < seed.cql | docker exec -i neo4j cypher-shell -u neo4j -p changeme --format plain`  
@@ -15,3 +44,6 @@ This is a small guide how to deploy LUME-Stack with docker-compose.
 5. Optional: Mock data
     1. Create Randomize-Config in mock folder (see [`mock/template.py`](mock/template.py))
     2. Run Randomization: `python3 mock/<file>.py`
+
+
+
