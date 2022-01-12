@@ -13,23 +13,12 @@ This is a small guide how to deploy LUME-Stack on cs.hs-rm VMs with docker-compo
     User root
     IdentityFile <Absolute path to id_ed25519 file>
   ```
-- establish a ssh connection with http tunnel  
+- establish a ssh connection with http proxy tunnel  
   Use guide [on Stackexchange](https://unix.stackexchange.com/a/490641)
 
 ## Installation
 
-Run the installation script `./install.sh`
-
-1. Update the system:       `apt update && apt upgrade -y`
-2. Install tools:           `apt install nginx curl git -y`
-3. Install docker:          `curl -sSL https://get.docker.com/ | sh`
-4. Install docker-compose:  `curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose`
-5. Clone repository:        `git clone https://github.com/hsrm-lume/deploy-compose.git && cd deploy-compose`
-6. Set up Proxy for docker: ``
-
-## Setup ReverseProxy (nginx)
-
-
+Run the installation script `./install.sh` (only on fresh install)
 
 ## Start services
 
