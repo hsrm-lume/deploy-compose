@@ -44,4 +44,4 @@ services:
     container_name: mbtiles
     restart: unless-stopped
     ports:
-      - "${TILESERVER_PORT}:8080" # expose map view
+      - "${TILESERVER_PORT}:80" # expose map view
