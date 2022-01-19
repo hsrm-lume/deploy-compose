@@ -24,10 +24,6 @@ Environment=\"HTTP_PROXY=http://proxy_url:proxy_port\" \"HTTPS_PROXY=http://prox
 	systemctl restart docker
 fi
 
-
-echo "Cloning Repository"
-git clone https://github.com/hsrm-lume/deploy-compose.git && cd deploy-compose
-
 echo "Done"
 
 
