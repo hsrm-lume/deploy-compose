@@ -39,6 +39,8 @@ services:
 
   mbtiles:
     image: ghcr.io/hsrm-lume/maptiler-server:latest # pull image from gh registry
+    volumes:
+      - "${MBTILES_PATH}:/data/mapdata.mbtiles"
     container_name: mbtiles
     restart: unless-stopped
     ports:

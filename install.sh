@@ -6,7 +6,7 @@ echo "Updating system"
 apt update && apt upgrade -y -qq
 
 echo "Installing Tools"
-apt install nginx curl git -y -qq
+apt install curl git -y -qq
 curl -sSL https://get.docker.com/ | sh
 curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
@@ -27,10 +27,6 @@ fi
 
 echo "Cloning Repository"
 git clone https://github.com/hsrm-lume/deploy-compose.git && cd deploy-compose
-
-echo "Setup Nginx Vi-Hosts"
-cat nginx-vhosts.conf > /etc/nginx/sites-available/default
-nginx -s reload
 
 echo "Done"
 
