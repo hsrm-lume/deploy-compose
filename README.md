@@ -4,12 +4,12 @@ This is a small guide how to deploy lume-Stack on worker nodes with docker-compo
 
 The following containers are included in the backend deployment:
 
-| Name     | Description                                                                                        |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| REST-API | Accepts app-reportings of new flame passings (tree nodes) and inserts them into the neo4j database |
-| Neo4j    | Graph database to store the path of the fire                                                       |
-| Mapview  | Angular MapView to show the graph on a map                                                         |
-| Maptiler | Tiles-Service for the angular app                                                                  |
+| Name                                                         | Description                                                                                        |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| [REST-API](https://github.com/hsrm-lume/lume-rest-api)       | Accepts app-reportings of new flame passings (tree nodes) and inserts them into the neo4j database |
+| [Neo4j](https://hub.docker.com/_/neo4j?tab=description)      | Graph database to store the path of the fire                                                       |
+| [Mapview](https://github.com/hsrm-lume/angular-map-frontend) | Angular MapView to show the graph on a map                                                         |
+| [Maptiler](https://github.com/hsrm-lume/maptiler-serverf)    | Tiles-Service for the angular app                                                                  |
 
 Remark: The lume-app is not part of this deployment, because the app download link is hosted by github releases.  
 For more on this see [the releases section of the app repository](https://github.com/hsrm-lume/react-native-cli-lume/releases) and [the corresponding github-action](https://github.com/hsrm-lume/react-native-cli-lume/actions/workflows/build-android.yml).
